@@ -9,17 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    client/package/type_package.cpp \
     client/sender.cpp \
     client_view.cpp \
     clients_model.cpp \
+    listener_task.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    package_quest.cpp
 
 HEADERS += \
+    client/package/type_package.h \
     client/sender.h \
     client_view.h \
     clients_model.h \
-    mainwindow.h
+    listener_task.h \
+    mainwindow.h \
+    package_quest.h
 
 FORMS +=
 
@@ -27,3 +33,6 @@ FORMS +=
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    rsc.qrc

@@ -7,6 +7,7 @@
 #include <QPointF>
 #include <QException>
 #include <QDebug>
+#include <QIcon>
 #include "clients_model.h"
 
 class ClientWidget_Settings : public QWidget
@@ -25,10 +26,12 @@ private:
     float performance;
     ClientData* client_data;
     QWidget settingsWidget;
+    QLabel lbl_test_icon;
+    QMap<int, QIcon> icon_types;
 
     //View
     QGridLayout main_layout;
-    QHBoxLayout position_layout;
+    QVBoxLayout position_layout;
     QLabel speed_label;
     QLabel performance_label;
     QLabel position_label_x, position_label_y;

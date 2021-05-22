@@ -4,6 +4,13 @@
 ClientData::ClientData(QObject *parent, TypeClient _TypeClient) : QObject(parent)
 {
     my_type = _TypeClient;
+    longituge = randomBetween(0,2000);
+    lalittude = randomBetween(0,2000);
+}
+
+int ClientData::randomBetween(int low, int high)
+{
+return (qrand() % ((high + 1) - low) + low);
 }
 
 float ClientData::get_speed()
@@ -55,12 +62,6 @@ uint ClientData::get_work_id()
 {
     return work_id;
 }
-
-//void ClientData::set_max_speed(float newSpeed)
-//{
-//    qDebug() << newSpeed;
-//    velosity = newSpeed;
-//}
 
 void ClientData::set_performance(float newPerformance)
 {

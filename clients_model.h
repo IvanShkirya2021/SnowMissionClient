@@ -2,7 +2,6 @@
 #define CLIENTS_MODEL_H
 
 #include <QObject>
-
 #include <QPointF>
 
 enum TypeClient {
@@ -38,6 +37,10 @@ public:
     uint get_status();
     uint get_work_id();
 
+    float longituge; //долгота
+    float lalittude; // широта
+
+    int randomBetween(int low, int high);
 private:
 
     QPointF my_position= QPointF(0,0);
@@ -49,8 +52,7 @@ private:
     uint work_id:16;
 
     float velosity = 30.0; //скорость
-    float longituge; //долгота
-    float lalittude; // широта
+
 
     float power; //запас топлива
 

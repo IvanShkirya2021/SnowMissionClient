@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     client_data = new ClientData();
     clientSettings = new ClientWidget_Settings(this, client_data);
     send_p = new sendPack(client_data);
+    listener_task = new ListenerTask(client_data);
     settings_client = new QMenu("&Настройки");
     settings_client->addAction("Открыть настройки", this, SLOT(open_settings()));
     main_menu_bar.addMenu(settings_client);
@@ -16,6 +17,8 @@ MainWindow::~MainWindow()
 {
     delete clientSettings;
     delete settings_client;
+    delete send_p;
+    delete listener_task;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
