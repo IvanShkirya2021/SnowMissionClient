@@ -3,7 +3,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    clientSettings = new ClientWidget_Settings(this);
+    client_data = new ClientData();
+    clientSettings = new ClientWidget_Settings(this, client_data);
+    send_p = new sendPack(client_data);
     settings_client = new QMenu("&Настройки");
     settings_client->addAction("Открыть настройки", this, SLOT(open_settings()));
     main_menu_bar.addMenu(settings_client);

@@ -1,7 +1,9 @@
 #include "client_view.h"
 
-ClientWidget_Settings::ClientWidget_Settings(QObject *parent)
+ClientWidget_Settings::ClientWidget_Settings(QObject *parent, ClientData* _client_data)
 {
+    client_data = _client_data;
+
     type_edit.setEnabled(false);
     speed_label.setText("Скорость: ");
     performance_label.setText("Производительность: ");
@@ -23,11 +25,11 @@ ClientWidget_Settings::ClientWidget_Settings(QObject *parent)
     main_layout.addWidget(&performance_edit, 1, 1);
     main_layout.addWidget(&type_edit, 4, 1);
 
-    speed_edit.setText(QString::number(client_data.get_speed()));
-    x_position_edit.setText(QString::number(client_data.get_position().x()));
-    y_position_edit.setText(QString::number(client_data.get_position().y()));
-    performance_edit.setText(QString::number(client_data.get_performance()));
-    type_edit.setText(client_data.get_my_type());
+    speed_edit.setText(QString::number(client_data->get_speed()));
+    x_position_edit.setText(QString::number(client_data->get_position().x()));
+    y_position_edit.setText(QString::number(client_data->get_position().y()));
+    performance_edit.setText(QString::number(client_data->get_performance()));
+    type_edit.setText(QString::number(client_data->get_my_type()));
 
 
     connect(&speed_edit, SIGNAL(editingFinished()), this, SLOT(speed_edit_finished()));
@@ -42,7 +44,7 @@ ClientWidget_Settings::ClientWidget_Settings(QObject *parent)
 void ClientWidget_Settings::speed_edit_finished()
 {
     try {
-        client_data.set_max_speed(speed_edit.text().toFloat());
+//        client_data->set set_max_speed(speed_edit.text().toFloat());
     }  catch (QException ex) {
 
     }
@@ -51,7 +53,7 @@ void ClientWidget_Settings::speed_edit_finished()
 void ClientWidget_Settings::performance_edit_finished()
 {
     try {
-        client_data.set_performance(performance_edit.text().toFloat());
+        client_data->set_performance(performance_edit.text().toFloat());
 
     }  catch (QException ex) {
 
@@ -61,7 +63,7 @@ void ClientWidget_Settings::performance_edit_finished()
 void ClientWidget_Settings::x_position_edit_finished()
 {
     try {
-        client_data.set_position_x(x_position_edit.text().toFloat());
+        client_data->set_position_x(x_position_edit.text().toFloat());
 
     }  catch (QException ex) {
 
@@ -71,7 +73,7 @@ void ClientWidget_Settings::x_position_edit_finished()
 void ClientWidget_Settings::y_position_edit_finished()
 {
     try {
-        client_data.set_position_y(speed_edit.text().toFloat());
+        client_data->set_position_y(speed_edit.text().toFloat());
 
     }  catch (QException ex) {
 

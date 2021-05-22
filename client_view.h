@@ -13,8 +13,7 @@ class ClientWidget_Settings : public QWidget
 {
     Q_OBJECT
 public:
-    ClientWidget_Settings(QObject *parent);
-
+    ClientWidget_Settings(QObject *parent, ClientData* client_data);
 
 private:
     //Data
@@ -24,9 +23,8 @@ private:
     TypeClient my_type;
     float my_speed;
     float performance;
-
+    ClientData* client_data;
     QWidget settingsWidget;
-    ClientData client_data;
 
     //View
     QGridLayout main_layout;
